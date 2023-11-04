@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Aliyah & Amril</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      body {
+        line-height: 1;
+      }
+      ol,
+      ul {
+        list-style: none;
+      }
+      blockquote,
+      q {
+        quotes: none;
+      }
+      blockquote:before,
+      blockquote:after,
+      q:before,
+      q:after {
+        content: "";
+        content: none;
+      }
+      table {
+        border-collapse: collapse;
+        border-spacing: 0;
+      }
+      html {
+        max-width: 100vw;
+        height: 100vh;
+      }
+      body {
+        position: relative;
+        width: 100%;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+      }
+
+      .background {
+        /* height: 100vh; */
+        background-image: url("/img/background.png"); /* Replace 'your-image.jpg' with the path to your image */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: -1;
+        position: fixed;
+        min-height: 100vh;
+        min-width: 100vw;
+        top: 0;
+        left: 0;
+      }
+
+      .container {
+        position: absolute;
+        top: 0;
+        margin: 0;
+        padding: 0;
+        z-index: 0;
+        color: #31496a;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 75vw;
+        padding: 0 12.5vw;
+      }
+
+      /* Optional: You can add additional styles for content within the centered container */
+      .content {
+        text-align: center;
+        font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+          "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        color: #31496a;
+
+        display: flex;
+        align-items: center;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .content img {
+        width: 100%
+      }
+
+      #first-page > img {
+        padding: 5rem 0 2rem;
+      }
+
+      #second-page > img {
+
+
+      }
+
+      #first-page {
+        min-height: 90vh;
+      }
+
+      #second-page {
+        min-height: 60vh;
+        margin-bottom: 5rem;
+      }
+
+      .buttons {
+        padding: 1rem 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .buttons > a > div {
+        font-size: 2.5rem;
+        flex-grow: 1;
+        background-image: linear-gradient(
+          to right top,
+          #0d3367,
+          #123970,
+          #163f79,
+          #1b4682,
+          #1f4c8b,
+          #204f91,
+          #225396,
+          #23569c,
+          #22579f,
+          #2157a2,
+          #2058a4,
+          #1f58a7
+        );
+        border: none; /* Remove the default button border */
+        color: white; /* Text color */
+        padding: 1rem 2rem; /* Padding for better spacing */
+        margin: 1rem;
+        text-align: center; /* Center the text */
+        text-decoration: none; /* Remove the default underline */
+        display: inline-block;
+        font-size: 2rem;
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .buttons > a {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        text-decoration: none;
+        flex-grow: 1;
+        
+      }
+
+      .buttonIcon {
+        max-height: 2rem; /* Set the height of the image */
+        max-width: 2rem; /* Set the width of the image */
+        padding: 0;
+        margin-left: 1rem;
+      }
+
+      #scrollButtonDiv {
+        height: 10vh;
+      }
+
+      /* to animate the scroll down button */
+      #scrollButton {
+        width: 10vw; /* Adjust the size as needed */
+        cursor: pointer;
+        animation: bounce 2s ease infinite; /* Define the animation */
+      }
+
+      /* Create a CSS keyframes animation named 'bounce' */
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0); /* Start and end position */
+        }
+        50% {
+          transform: translateY(-2rem); /* Bounce up */
+        }
+      }
+
+      .audio-control {
+        position: fixed;
+        top: 28%;
+        right: 0;
+        transform: translate(0, -50%);
+        background-image: linear-gradient(
+          to right top,
+          #0d3367,
+          #123970,
+          #163f79,
+          #1b4682,
+          #1f4c8b,
+          #204f91,
+          #225396,
+          #23569c,
+          #22579f,
+          #2157a2,
+          #2058a4,
+          #1f58a7
+        );
+        padding: 1.5rem 2rem; /* Padding for better spacing */
+        border-radius: 5px;
+        color: #fff;
+        z-index: 999;
+        font-size: 2rem;
+      }
+
+      #myAudio {
+        volume: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content" id="first-page">
+        <img src="/img/first_page.png" alt="" />
+        <div class="buttons">
+          <a href="https://maps.app.goo.gl/WuLr1rGNVMwVjsoQ6" target="_blank">
+            <div id="openGoogleMaps">
+              <p>Google Maps</p>
+              <img
+                class="buttonIcon"
+                src="img/icon_google-maps.png"
+                alt="Image"
+              />
+            </div>
+          </a>
+          <a href="https://waze.com/ul/hw22gzssnm" target="_blank">
+            <div id="openWaze">
+              <p>Waze</p>
+              <img class="buttonIcon" src="img/icon_waze.png" alt="Image" />
+            </div>
+          </a>
+        </div>
+      </div>
+      <div id="scrollButtonDiv">
+        <img
+          id="scrollButton"
+          src="img/down_arrow.png"
+          alt="Scroll Down Icon"
+        />
+      </div>
+      <div class="content" id="second-page">
+<!--         <div>
+          <img
+            id="scrollToTop"
+            src="img/up_arrow.png"
+            alt="Scroll to Top Icon"
+          />
+        </div> -->
+        <img src="/img/second_page.png" alt="" />
+      </div>
+    </div>
+    <div id="top-flower"></div>
+    <div id="bottom-flower"></div>
+    <div class="background">
+      <p>hi</p>
+    </div>
+    <div class="audio-control">
+      <p id="muteButton">Mute 🔇</p>
+    </div>
+<!--     <audio id="myAudio" autoplay>
+      <source src="/audio/song.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio> -->
+
+        <audio
+      id="myAudio"
+      preload="auto"
+      src="/audio/song.mp3"
+      autoplay
+      loop
+    ></audio>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const clickableImage = document.getElementById("scrollButton");
+
+      clickableImage.addEventListener("click", () => {
+        // Change the image source when clicked
+        if (clickableImage.src.includes("img/down_arrow.png")) {
+          clickableImage.src = "img/up_arrow.png";
+          const pageHeight = document.documentElement.scrollHeight;
+          window.scrollTo({
+            top: pageHeight,
+            behavior: "smooth", // To create a smooth scrolling effect
+          });
+        } else {
+          clickableImage.src = "img/down_arrow.png";
+          window.scrollTo({
+            top: 0, // Scroll to the top of the page
+            behavior: "smooth", // To create a smooth scrolling effect
+          });
+        }
+      });
+    });
+
+/*     document.addEventListener("DOMContentLoaded", function () {
+      const scrollImage = document.getElementById("scrollToBottom");
+
+      scrollImage.addEventListener("click", function () {
+        const pageHeight = document.documentElement.scrollHeight;
+        window.scrollTo({
+          top: pageHeight,
+          behavior: "smooth", // To create a smooth scrolling effect
+        });
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const scrollToTop = document.getElementById("scrollToTop");
+
+      scrollToTop.addEventListener("click", function () {
+        window.scrollTo({
+          top: 0, // Scroll to the top of the page
+          behavior: "smooth", // To create a smooth scrolling effect
+        });
+      });
+    }); */
+
+    /*     var audio = document.getElementById('myAudio');
+    var muteButton = document.getElementById('muteButton');
+    var context = new (window.AudioContext || window.webkitAudioContext)();
+    var gainNode = context.createGain();
+    var fadeDuration = 3; // Duration of the fade-in effect in seconds
+
+    audio.addEventListener('canplaythrough', function () {
+        audio.play();
+        fadeAudioIn();
+    });
+
+    function fadeAudioIn() {
+        gainNode.connect(context.destination);
+        gainNode.gain.setValueAtTime(0, context.currentTime);
+        gainNode.gain.linearRampToValueAtTime(1, context.currentTime + fadeDuration);
+
+        muteButton.addEventListener('click', toggleMute);
+    }
+
+    function toggleMute() {
+        if (audio.muted) {
+            audio.muted = false;
+            muteButton.innerText = 'Mute';
+        } else {
+            audio.muted = true;
+            muteButton.innerText = 'Unmute';
+        }
+    }
+ */
+
+    var audio = document.getElementById("myAudio");
+    var muteButton = document.getElementById("muteButton");
+
+    function replayAudio() {
+      audio.currentTime = 0; // Set the audio to the beginning
+      audio.play(); // Start playing again
+    }
+
+    // Event listener for the audio "ended" event
+    audio.addEventListener("ended", function () {
+      replayAudio();
+    });
+
+    muteButton.addEventListener("click", function () {
+      if (audio.muted) {
+        audio.muted = false;
+        muteButton.innerText = "Mute 🔇";
+      } else {
+        audio.muted = true;
+        muteButton.innerText = "Unmute 🔊";
+      }
+    });
+  </script>
+</html>
