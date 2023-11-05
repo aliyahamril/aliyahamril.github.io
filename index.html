@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Aliyah & Amril</title>
+    <title>A'liyah & Amril</title>
     <style>
       * {
         padding: 0;
@@ -274,17 +274,17 @@
       <p>hi</p>
     </div>
     <div class="audio-control">
-      <p id="muteButton">Mute 🔇</p>
+      <p id="muteButton">Play 🔊</p>
     </div>
-    <audio id="myAudio" autoplay>
-      <source src="/audio/song.mp3" type="audio/mpeg" />
+    <audio id="myAudio" autoplay muted>
+      <source src="./audio/song.mp3" type="audio/mpeg" />
       Your browser does not support the audio element.
     </audio>
-<!-- 
-      <audio
+
+<!--       <audio
       id="myAudio"
       preload="auto"
-      src="/audio/song.mp3"
+      src="./audio/song.mp3"
       autoplay
       loop
     ></audio> -->
@@ -381,10 +381,10 @@
     muteButton.addEventListener("click", function () {
       if (audio.muted) {
         audio.muted = false;
-        muteButton.innerText = "Mute 🔇";
+        muteButton.innerText = "Paused 🔇";
       } else {
         audio.muted = true;
-        muteButton.innerText = "Unmute 🔊";
+        muteButton.innerText = "Play 🔊";
       }
     });
   </script>
